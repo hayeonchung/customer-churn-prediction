@@ -78,15 +78,16 @@ ggplot(churn, aes(x = tenure)) +
 These visualizations provide initial insights into customer churn behavior. The first
 bar chart confirms the dataset is imbalanced with a significantly higher number
 of customers who did not churn compared to those who did. When examining churn
-rate by contract type, customers on month-to-month contracts have a much higher churn rate than those on one or two year contracts. This suggests that long-term agreements
-may serve as a natural retention mechanism. The boxplot of monthly charges by churn 
-status demonstrates that customers who churn tend to have higher monthly charges
-on average which indicates potential dissatisfaction with pricing or service value. 
-Lastly, the histogram of customer tenure shows many customers tend to leave early 
-in their life cycle, particularly within the first 12 months. Another noticeable
-group remains long-term, often around the 70+ month range. These insights suggest
-both contract structure and billing level play a key role in customer retention 
-and the early stages of a customer's life cycle are critical. 
+rate by contract type, customers on month-to-month contracts have a much 
+higher churn rate than those on one or two year contracts. This suggests that 
+long-term agreementsmay serve as a natural retention mechanism. The boxplot of 
+monthly charges by churn status demonstrates that customers who churn tend to have 
+higher monthly charges on average which indicates potential dissatisfaction with
+pricing or service value. Lastly, the histogram of customer tenure shows many 
+customers tend to leave early in their life cycle, particularly within the first 
+12 months. Another noticeable group remains long-term, often around the 70+ month 
+range. These insights suggest both contract structure and billing level play a key
+role in customer retention and the early stages of a customer's life cycle are critical. 
 
 # 4. Feature Engineering 
 ```{r}
@@ -136,7 +137,8 @@ auc(roc_obj)
 plot(roc_obj, main = "Logistic Regression ROC")
 ```
 The logistic regression model performed reasonably well in predicting customer churn.
-The overall accuracy of the model is approximately 79.6% which is significantly better than the No Information Rate (73.45%) as indicated by a very small p-value of 
+The overall accuracy of the model is approximately 79.6% which is significantly better
+than the No Information Rate (73.45%) as indicated by a very small p-value of 
 1.36e-11. This model demonstrates high sensitivity with a value of 0.9031 which means 
 it correctly identifies over 90% of customers who did not churn. However,
 specificity is lower (0.555) which indicates that the model is less effective
@@ -172,7 +174,8 @@ reflects moderate agreement between predictions and true labels.
 
 The variable importance plot reveals the most influential features in predicting
 churn. The plot underlines both customer longevity and billing structure are key
-drivers of retention. Additionally, service-related variables such as internet_service and tech_support also plays a substantial role. This indicates that the type and 
+drivers of retention. Additionally, service-related variables such as internet_service
+and tech_support also plays a substantial role. This indicates that the type and 
 quality of services subscribed to may impact a customer's decision to stay. These
 findings can inform targeted retention strategies, particularly for customers with 
 short tenure, high charges, and flexible contracts. 
@@ -201,7 +204,8 @@ variable important plot reveals the top predictors of churn. These features show
 the greatest reduction in AUC when permuted which indicates their strong contribution
 to model performance. Service-related variables such as tech_support and online_backup 
 also had meaningful but comparatively smaller impact on churn. Overall, the DALEX
-output reinforces previous findings from model-based variable importance plots and provides clear and quantitative evidence of which customer characteristics most 
+output reinforces previous findings from model-based variable importance plots and 
+provides clear and quantitative evidence of which customer characteristics most 
 affect risk for churn. 
 
 # 7. Business Insights and Recommendations
@@ -218,23 +222,37 @@ to leave. This suggests that new customers may be especially sensitive to pricin
 The company should consider implementing a welcome program that includes onboarding
 support and introduce pricing tiers or satisfaction check-ins during the first
 few months. Third, internet service type and online security matter. Customers 
-with DSL internet or lacking security features such as tech support or online security were more prone to churn. Bundling value-added services such as security, backup, 
+with DSL internet or lacking security features such as tech support or online security 
+were more prone to churn. Bundling value-added services such as security, backup, 
 or 24/7 tech support into existing plans may improve satisfaction and perceived
 value. Lastly, demographics play a smaller role. Features such as gender, dependents,
 and senior citizen status had minimal influence on churn in this dataset, suggesting
 that behavioral and service-level factors are more impactful for predicting retention. 
 
-Here are a list of actionable recommendations to address the insights. Retention targeting that uses the trained model to score current customers and identify 
+Here are a list of actionable recommendations to address the insights. Retention targeting
+that uses the trained model to score current customers and identify 
 high-risk segments for proactive outreach. Contract restructing should be used
 to offer flexible upgrade paths and loyalty discounts for customers currently 
 on month-to month plans. Onboarding support would be beneficial when launching
-early engagement campaigns within the first 3 months of a new customer's tenure. Service bundling to promote bundled tech support and security features to enhance
-perceived value and reduce churn for internet service customers. Lastly, monitor key indicators to integrate top predictive features such as tenure, contract, and billing into a real-time dashboard to track churn risk trends. 
+early engagement campaigns within the first 3 months of a new customer's tenure. Service 
+bundling to promote bundled tech support and security features to enhance
+perceived value and reduce churn for internet service customers. Lastly, monitor key indicators 
+to integrate top predictive features such as tenure, contract, and billing into a real-time 
+dashboard to track churn risk trends. 
 
 By acting on these insights, the company can move from reactive to proactive retention
 strategies and ultimately strengthen its long-term customer relationships. 
 
 # 8. Conclusions and Next Steps
-This project successfully developed and evaluated predictive models to identify customers at risk of churning. The random forest model performed slightly better than logistic regression by achieving strong accuracy and balanced performance. Key drivers of churn included contract type, tenure, billing amounts, and service-related features like tech support and internet security. These findings highlight the importance of early engagement and bundling value-added services to reduce churn.
+This project successfully developed and evaluated predictive models to identify customers at risk
+of churning. The random forest model performed slightly better than logistic regression by 
+achieving strong accuracy and balanced performance. Key drivers of churn included contract type,
+tenure, billing amounts, and service-related features like tech support and internet security. 
+These findings highlight the importance of early engagement and bundling value-added services to 
+reduce churn.
 
-Moving forward, the model can be deployed to flag high-risk customers in real time and support proactive retention efforts. Additional steps include expanding the feature set with usage or customer service data, testing targeted offers through A/B experiments, and exploring more advanced models like XGBoost. Finally, building a Shiny dashboard could enable stakeholders to interact with churn predictions and insights in an intuitive, real-time format.
+Moving forward, the model can be deployed to flag high-risk customers in real time and support 
+proactive retention efforts. Additional steps include expanding the feature set with usage or 
+customer service data, testing targeted offers through A/B experiments, and exploring more advanced 
+models like XGBoost. Finally, building a Shiny dashboard could enable stakeholders to interact with 
+churn predictions and insights in an intuitive, real-time format.
